@@ -2,6 +2,7 @@ package com.deveficiente.desafiocdc.autor;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,8 +18,6 @@ import com.sun.istack.NotNull;
 /**
  * Carga Intrínseca: 0
  * 
- * @author nayra
- *
  */
 @Entity
 public class Autor {
@@ -29,9 +28,10 @@ public class Autor {
 	
 	@NotBlank
 	private String nome;
-	
+
 	@NotBlank
 	@Email
+	@Column(unique = true)
 	private String email;
 	
 	@NotBlank
@@ -40,6 +40,11 @@ public class Autor {
 	
 	@NotNull
 	private LocalDateTime dataCriacao = LocalDateTime.now();
+	
+	@Deprecated
+	public Autor() {
+		super();
+	}
 
 	public Autor(@NotBlank String nome, @NotBlank @Email String email, @NotBlank @Size(max = 400) String descricao) {
 		super();
