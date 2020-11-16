@@ -1,4 +1,4 @@
-package com.deveficiente.desafiocdc.validacoes;
+package com.deveficiente.desafiocdc.extras.validacoes;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -7,7 +7,7 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.util.Assert;
 
-import com.deveficiente.desafiocdc.anotacoes.Unique;
+import com.deveficiente.desafiocdc.extras.anotacoes.Unique;
 
 /**
  * Carga Intrínseca: 2 

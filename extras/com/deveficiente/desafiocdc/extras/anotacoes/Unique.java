@@ -1,4 +1,4 @@
-package com.deveficiente.desafiocdc.anotacoes;
+package com.deveficiente.desafiocdc.extras.anotacoes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import com.deveficiente.desafiocdc.validacoes.UniqueConstraintValidator;
+import com.deveficiente.desafiocdc.extras.validacoes.UniqueConstraintValidator;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

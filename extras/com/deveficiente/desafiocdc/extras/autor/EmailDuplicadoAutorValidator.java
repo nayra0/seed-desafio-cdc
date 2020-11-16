@@ -1,10 +1,13 @@
-package com.deveficiente.desafiocdc.autor;
+package com.deveficiente.desafiocdc.extras.autor;
 
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
+import com.deveficiente.desafiocdc.autor.Autor;
+import com.deveficiente.desafiocdc.autor.NovoAutorForm;
 
 /**
  * Carga Intrínseca: 5
