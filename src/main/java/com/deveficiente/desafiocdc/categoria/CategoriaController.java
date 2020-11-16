@@ -1,4 +1,4 @@
-package com.deveficiente.desafiocdc.autor;
+package com.deveficiente.desafiocdc.categoria;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -19,13 +19,13 @@ import com.deveficiente.desafiocdc.compartilhado.UniqueValidator;
  * 
  */
 @RestController
-@RequestMapping("/autores")
-public class AutorController {
+@RequestMapping("/categorias")
+public class CategoriaController {
 
 	private EntityManager manager;
 	private MessageSource messageSource;
 
-	public AutorController(EntityManager manager, MessageSource messageSource) {
+	public CategoriaController(EntityManager manager, MessageSource messageSource) {
 		super();
 		this.manager = manager;
 		this.messageSource = messageSource;
@@ -37,15 +37,16 @@ public class AutorController {
 	 */
 	@InitBinder
 	public void init(WebDataBinder dataBinder) {
-		dataBinder.addValidators(new UniqueValidator<NovoAutorForm>(Autor.class, this.manager, this.messageSource));
+		dataBinder.addValidators(
+				new UniqueValidator<NovaCategoriaForm>(Categoria.class, this.manager, this.messageSource));
 	}
 
 	@PostMapping
 	@Transactional
-	public String cria(@RequestBody @Valid NovoAutorForm novoAutorForm) {
-		Autor autor = novoAutorForm.toModel();
-		manager.persist(autor);
-		return autor.toString();
+	public String cria(@RequestBody @Valid NovaCategoriaForm novaCategoriaForm) {
+		Categoria categoria = novaCategoriaForm.toModel();
+		this.manager.persist(categoria);
+		return categoria.toString();
 	}
 
 }

@@ -7,11 +7,14 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.deveficiente.desafiocdc.compartilhado.UniqueProperties;
+
 /**
- * Carga Intrínseca: 1
+ * Carga Intrínseca: 3
  *
+ * 1
  */
-public class NovoAutorForm {
+public class NovoAutorForm implements UniqueProperties{
 
 	@NotBlank
 	private String nome;
@@ -41,22 +44,18 @@ public class NovoAutorForm {
 		return new Autor(this.nome, this.email, this.descricao);
 	}
 	
-	public String getNome() {
-		return nome;
-	}
-
 	public String getEmail() {
 		return this.email;
 	}
 	
 	/**
-	 * Carga Intrínseca: 0
+	 * Carga Intrínseca: 1
 	 * 
 	 */
-	public static HashMap<String, Function<NovoAutorForm, String>> obterPropriedadesUnicas() {
+	@SuppressWarnings("unchecked")
+	public HashMap<String, Function<NovoAutorForm, String>> obterPropriedadesUnicas() {
 		HashMap<String, Function<NovoAutorForm, String>> propriedadesUnicas = new HashMap<>();
 		propriedadesUnicas.put("email", NovoAutorForm::getEmail);
-		propriedadesUnicas.put("nome", NovoAutorForm::getNome);
 		return propriedadesUnicas;
 	}
 

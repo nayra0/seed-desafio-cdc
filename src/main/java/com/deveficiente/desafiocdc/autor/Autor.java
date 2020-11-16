@@ -15,10 +15,6 @@ import org.springframework.util.Assert;
 
 import com.sun.istack.NotNull;
 
-/**
- * Carga Intrínseca: 0
- * 
- */
 @Entity
 public class Autor {
 	
@@ -41,11 +37,6 @@ public class Autor {
 	@NotNull
 	private LocalDateTime dataCriacao = LocalDateTime.now();
 	
-	@Deprecated
-	public Autor() {
-		super();
-	}
-
 	public Autor(@NotBlank String nome, @NotBlank @Email String email, @NotBlank @Size(max = 400) String descricao) {
 		super();
 		
