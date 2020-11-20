@@ -1,4 +1,4 @@
-package com.deveficiente.desafiocdc.autor;
+package com.deveficiente.desafiocdc.livro;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -14,38 +14,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.deveficiente.desafiocdc.compartilhado.UniqueValidator;
 
-/**
- * Carga Intrínseca: 3
- * 
- */
 @RestController
-@RequestMapping("/autores")
-public class AutorController {
-
+@RequestMapping("/livros")
+public class LivroController {
+	
 	private EntityManager manager;
 	private MessageSource messageSource;
 
-	public AutorController(EntityManager manager, MessageSource messageSource) {
+	public LivroController(EntityManager manager, MessageSource messageSource) {
 		super();
 		this.manager = manager;
 		this.messageSource = messageSource;
 	}
-
-	/**
-	 * Carga Intrínseca: 3
-	 * 
-	 */
+	
 	@InitBinder
 	public void init(WebDataBinder dataBinder) {
-		dataBinder.addValidators(new UniqueValidator<NovoAutorForm>(Autor.class, this.manager, this.messageSource));
+		dataBinder.addValidators(new UniqueValidator<>(Livro.class, this.manager, this.messageSource));
 	}
 
-	@PostMapping
 	@Transactional
-	public String cria(@RequestBody @Valid NovoAutorForm form) {
-		Autor novoAutor = form.toModel();
-		manager.persist(novoAutor);
-		return novoAutor.toString();
+	@PostMapping
+	public String cria(@RequestBody @Valid NovoLivroForm form) {
+		Livro novoLivro  = form.toModel(this.manager);
+		this.manager.persist(novoLivro);
+		return novoLivro.toString();
 	}
 
 }

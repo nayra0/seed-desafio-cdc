@@ -43,10 +43,10 @@ public class CategoriaController {
 
 	@PostMapping
 	@Transactional
-	public String cria(@RequestBody @Valid NovaCategoriaForm novaCategoriaForm) {
-		Categoria categoria = novaCategoriaForm.toModel();
-		this.manager.persist(categoria);
-		return categoria.toString();
+	public String cria(@RequestBody @Valid NovaCategoriaForm form) {
+		Categoria novaCategoria = form.toModel();
+		this.manager.persist(novaCategoria);
+		return novaCategoria.toString();
 	}
 
 }
