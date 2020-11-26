@@ -3,10 +3,12 @@ package com.deveficiente.desafiocdc.livro;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Future;
@@ -19,6 +21,7 @@ import org.springframework.util.Assert;
 
 import com.deveficiente.desafiocdc.autor.Autor;
 import com.deveficiente.desafiocdc.categoria.Categoria;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Livro {
@@ -33,6 +36,10 @@ public class Livro {
 	@NotBlank
 	@Size(max = 500)
 	private String resumo;
+	
+	@Column(columnDefinition = "text")
+	@JsonProperty
+	private String sumario;
 
 	@NotNull
 	@DecimalMin("20.0")
@@ -51,13 +58,20 @@ public class Livro {
 
 	@NotNull
 	@OneToOne
+	@JoinColumn(name = "id_categoria")
 	private Categoria categoria;
 
 	@NotNull
 	@OneToOne
+	@JoinColumn(name = "id_autor")
 	private Autor autor;
+	
+	@Deprecated
+	public Livro() {
+		super();
+	}
 
-	public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo,
+	public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, String sumario,
 			@NotNull @DecimalMin("20.0") BigDecimal preco, @NotNull @Min(100) long quantidadePaginas,
 			@NotBlank String isbn, @NotNull @Future LocalDate dataPublicacao, Categoria categoria, Autor autor) {
 
@@ -69,6 +83,7 @@ public class Livro {
 
 		this.titulo = titulo;
 		this.resumo = resumo;
+		this.sumario = sumario;
 		this.preco = preco;
 		this.quantidadePaginas = quantidadePaginas;
 		this.isbn = isbn;

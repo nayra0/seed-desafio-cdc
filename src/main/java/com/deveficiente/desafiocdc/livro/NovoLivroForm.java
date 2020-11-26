@@ -70,7 +70,7 @@ public class NovoLivroForm implements UniqueProperties {
 		Categoria categoria = manager.find(Categoria.class, this.idCategoria);
 		Autor autor = manager.find(Autor.class, this.idAutor);
 
-		return new Livro(titulo, resumo, preco, quantidadePaginas, isbn, dataPublicacao, categoria, autor);
+		return new Livro(titulo, resumo, sumario, preco, quantidadePaginas, isbn, dataPublicacao, categoria, autor);
 	}
 
 	@SuppressWarnings("unchecked")
