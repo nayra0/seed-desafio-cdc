@@ -72,7 +72,7 @@ public class NovoLivroForm implements UniqueProperties {
 
 		return new Livro(titulo, resumo, sumario, preco, quantidadePaginas, isbn, dataPublicacao, categoria, autor);
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public HashMap<String, Function<NovoLivroForm, String>> obterPropriedadesUnicas() {
@@ -90,4 +90,20 @@ public class NovoLivroForm implements UniqueProperties {
 		return isbn;
 	}
 
+	public Long getIdAutor() {
+		return idAutor;
+	}
+
+	public void setIdAutor(Long idAutor) {
+		this.idAutor = idAutor;
+	}
+
+	public Long getIdCategoria() {
+		return idCategoria;
+	}
+
+	public void setIdCategoria(Long idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+	
 }
