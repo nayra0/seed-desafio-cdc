@@ -20,6 +20,7 @@ import com.deveficiente.desafiocdc.compartilhado.UniqueProperties;
 import com.deveficiente.desafiocdc.compartilhado.anotacoes.IdCadastrado;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+// CI: 3
 public class NovoLivroForm implements UniqueProperties {
 
 	@NotBlank
@@ -64,6 +65,7 @@ public class NovoLivroForm implements UniqueProperties {
 	@JsonProperty
 	private Long idAutor;
 
+	// CI: 3
 	public Livro toModel(EntityManager manager) {
 		Categoria categoria = manager.find(Categoria.class, this.idCategoria);
 		Autor autor = manager.find(Autor.class, this.idAutor);

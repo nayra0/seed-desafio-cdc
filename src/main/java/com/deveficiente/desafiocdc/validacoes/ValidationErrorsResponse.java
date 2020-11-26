@@ -5,9 +5,7 @@ import java.util.List;
 
 import org.springframework.util.Assert;
 
-/**
- * Carga intrínseca: 1 
- */
+// CI: 1
 public class ValidationErrorsResponse {
 
 	private List<String> errors;
@@ -23,9 +21,7 @@ public class ValidationErrorsResponse {
 		return this.errors.add(error);
 	}
 	
-	/**
-	 * Carga intrínseca: 1 
-	 */
+	// CI: 1
 	public boolean addFieldError(String field, String message) {
 		Assert.notNull(this.errors, "FieldErrors não deve ser nulo");
 		return this.fieldErrors.add(new FieldErrorResponse(field, message));

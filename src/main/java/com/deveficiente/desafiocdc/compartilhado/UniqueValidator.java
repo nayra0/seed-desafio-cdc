@@ -12,11 +12,9 @@ import org.springframework.util.Assert;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-/**
- * Carga Intrínseca: 4
- * 
- * 1
- */
+// CI: 4
+
+// CI: 1
 public class UniqueValidator<T extends UniqueProperties> implements Validator {
 
 	private static final String UNIQUE_VALIDATION_CODE = "validation.unique";
@@ -35,10 +33,7 @@ public class UniqueValidator<T extends UniqueProperties> implements Validator {
 		return true;
 	}
 
-	/**
-	 * Carga Intrínseca: 3
-	 * 
-	 */
+	// CI: 3
 	@SuppressWarnings("unchecked")
 	@Override
 	public void validate(Object target, Errors errors) {

@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.context.MessageSource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,10 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.deveficiente.desafiocdc.compartilhado.UniqueValidator;
 
-/**
- * Carga Intrínseca: 3
- * 
- */
+// CI: 4
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaController {
@@ -31,22 +29,20 @@ public class CategoriaController {
 		this.messageSource = messageSource;
 	}
 
-	/**
-	 * Carga Intrínseca: 3
-	 * 
-	 */
+	// CI: 3
 	@InitBinder
 	public void init(WebDataBinder dataBinder) {
 		dataBinder.addValidators(
 				new UniqueValidator<NovaCategoriaForm>(Categoria.class, this.manager, this.messageSource));
 	}
 
+	// CI: 1
 	@PostMapping
 	@Transactional
-	public String cria(@RequestBody @Valid NovaCategoriaForm form) {
+	public ResponseEntity<NovaCategoriaResponse> cria(@RequestBody @Valid NovaCategoriaForm form) {
 		Categoria novaCategoria = form.toModel();
 		this.manager.persist(novaCategoria);
-		return novaCategoria.toString();
+		return ResponseEntity.ok(new NovaCategoriaResponse(novaCategoria));
 	}
 
 }

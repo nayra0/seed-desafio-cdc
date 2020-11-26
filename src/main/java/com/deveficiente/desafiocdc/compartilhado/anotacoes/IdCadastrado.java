@@ -10,6 +10,7 @@ import javax.validation.Payload;
 
 import com.deveficiente.desafiocdc.compartilhado.IdCadastradoConstraintValidator;
 
+// CI: 1
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @Constraint(validatedBy = IdCadastradoConstraintValidator.class)

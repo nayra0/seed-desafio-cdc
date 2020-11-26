@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.context.MessageSource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,10 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.deveficiente.desafiocdc.compartilhado.UniqueValidator;
 
+// CI: 4
 @RestController
 @RequestMapping("/livros")
 public class LivroController {
-	
+
 	private EntityManager manager;
 	private MessageSource messageSource;
 
@@ -26,18 +28,20 @@ public class LivroController {
 		this.manager = manager;
 		this.messageSource = messageSource;
 	}
-	
+
+	// CI: 3
 	@InitBinder
 	public void init(WebDataBinder dataBinder) {
-		dataBinder.addValidators(new UniqueValidator<>(Livro.class, this.manager, this.messageSource));
+		dataBinder.addValidators(new UniqueValidator<NovoLivroForm>(Livro.class, this.manager, this.messageSource));
 	}
 
+	// CI: 1
 	@Transactional
 	@PostMapping
-	public String cria(@RequestBody @Valid NovoLivroForm form) {
-		Livro novoLivro  = form.toModel(this.manager);
+	public ResponseEntity<NovoLivroResponse> cria(@RequestBody @Valid NovoLivroForm form) {
+		Livro novoLivro = form.toModel(this.manager);
 		this.manager.persist(novoLivro);
-		return novoLivro.toString();
+		return ResponseEntity.ok(new NovoLivroResponse(novoLivro));
 	}
 
 }

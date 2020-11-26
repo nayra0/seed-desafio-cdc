@@ -6,36 +6,20 @@ import java.util.function.Function;
 import javax.validation.constraints.NotBlank;
 
 import com.deveficiente.desafiocdc.compartilhado.UniqueProperties;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Carga Intrínseca: 3
- * 
- * 1
- */
+// CI: 1
 public class NovaCategoriaForm implements UniqueProperties{
 
+	@JsonProperty
 	@NotBlank
 	private String nome;
 	
-	@JsonCreator
-	public NovaCategoriaForm(@NotBlank String nome) {
-		super();
-		this.nome = nome;
-	}
-	
-	/**
-	 * Carga Intrínseca: 1
-	 * 
-	 */
+	// CI: 1
 	public Categoria toModel() {
 		return new Categoria(nome);
 	}
 	
-	/**
-	 * Carga Intrínseca: 1
-	 * 
-	 */
 	@SuppressWarnings("unchecked")
 	public HashMap<String, Function<NovaCategoriaForm, String>> obterPropriedadesUnicas() {
 		HashMap<String, Function<NovaCategoriaForm, String>> propriedadesUnicas = new HashMap<>();

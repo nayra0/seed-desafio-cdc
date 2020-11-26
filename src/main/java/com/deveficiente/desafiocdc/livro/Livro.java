@@ -34,39 +34,39 @@ public class Livro {
 	@Size(max = 500)
 	private String resumo;
 
-	@NotNull 
-	@DecimalMin("20.0") 
+	@NotNull
+	@DecimalMin("20.0")
 	private BigDecimal preco;
 
-	@NotNull 
-	@Min(100) 
+	@NotNull
+	@Min(100)
 	private long quantidadePaginas;
 
-	@NotBlank 
+	@NotBlank
 	private String isbn;
-	
-	@NotNull 
-	@Future 
+
+	@NotNull
+	@Future
 	private LocalDate dataPublicacao;
-	
-//	@NotNull
+
+	@NotNull
 	@OneToOne
 	private Categoria categoria;
-	
-//	@NotNull
+
+	@NotNull
 	@OneToOne
 	private Autor autor;
 
 	public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo,
 			@NotNull @DecimalMin("20.0") BigDecimal preco, @NotNull @Min(100) long quantidadePaginas,
 			@NotBlank String isbn, @NotNull @Future LocalDate dataPublicacao, Categoria categoria, Autor autor) {
-		
+
 		Assert.notNull(titulo, "titulo não pode ser nulo");
 		Assert.notNull(resumo, "resumo não pode ser nulo");
 		Assert.notNull(preco, "preco não pode ser nulo");
 		Assert.notNull(isbn, "isbn não pode ser nulo");
-//		Assert.notNull(dataPublicacao, "dataPublicacao não pode ser nulo");
-		
+		Assert.notNull(dataPublicacao, "dataPublicacao não pode ser nulo");
+
 		this.titulo = titulo;
 		this.resumo = resumo;
 		this.preco = preco;
@@ -77,11 +77,76 @@ public class Livro {
 		this.autor = autor;
 	}
 
-	@Override
-	public String toString() {
-		return "Livro [id=" + id + ", titulo=" + titulo + ", resumo=" + resumo + ", preco=" + preco
-				+ ", quantidadePaginas=" + quantidadePaginas + ", isbn=" + isbn + ", dataPublicacao=" + dataPublicacao
-				+ ", categoria=" + categoria + ", autor=" + autor + "]";
+	public Long getId() {
+		return id;
 	}
-	
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getResumo() {
+		return resumo;
+	}
+
+	public void setResumo(String resumo) {
+		this.resumo = resumo;
+	}
+
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+
+	public long getQuantidadePaginas() {
+		return quantidadePaginas;
+	}
+
+	public void setQuantidadePaginas(long quantidadePaginas) {
+		this.quantidadePaginas = quantidadePaginas;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public LocalDate getDataPublicacao() {
+		return dataPublicacao;
+	}
+
+	public void setDataPublicacao(LocalDate dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Autor getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
+
 }
