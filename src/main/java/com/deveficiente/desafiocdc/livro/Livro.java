@@ -96,72 +96,36 @@ public class Livro {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getTitulo() {
 		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
 	}
 
 	public String getResumo() {
 		return resumo;
 	}
 
-	public void setResumo(String resumo) {
-		this.resumo = resumo;
-	}
-
 	public BigDecimal getPreco() {
 		return preco;
-	}
-
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
 	}
 
 	public long getQuantidadePaginas() {
 		return quantidadePaginas;
 	}
 
-	public void setQuantidadePaginas(long quantidadePaginas) {
-		this.quantidadePaginas = quantidadePaginas;
-	}
-
 	public String getIsbn() {
 		return isbn;
-	}
-
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
 	}
 
 	public LocalDate getDataPublicacao() {
 		return dataPublicacao;
 	}
 
-	public void setDataPublicacao(LocalDate dataPublicacao) {
-		this.dataPublicacao = dataPublicacao;
-	}
-
 	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
 	public Autor getAutor() {
 		return autor;
-	}
-
-	public void setAutor(Autor autor) {
-		this.autor = autor;
 	}
 
 }

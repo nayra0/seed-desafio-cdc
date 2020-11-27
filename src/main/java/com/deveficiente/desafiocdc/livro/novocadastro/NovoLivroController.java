@@ -1,4 +1,4 @@
-package com.deveficiente.desafiocdc.livro;
+package com.deveficiente.desafiocdc.livro.novocadastro;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.deveficiente.desafiocdc.compartilhado.UniqueValidator;
+import com.deveficiente.desafiocdc.livro.Livro;
 
 // CI: 4
 @RestController
@@ -43,5 +44,5 @@ public class NovoLivroController {
 		this.manager.persist(novoLivro);
 		return ResponseEntity.ok(new NovoLivroResponse(novoLivro));
 	}
-
+	
 }

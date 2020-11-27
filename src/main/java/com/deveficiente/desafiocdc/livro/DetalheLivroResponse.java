@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-// CI: 1
+// CI: 2
 public class DetalheLivroResponse {
 
 	@JsonProperty
@@ -27,12 +27,9 @@ public class DetalheLivroResponse {
 	private LocalDate dataPublicacao;
 
 	@JsonProperty
-	private String categoria;
+	private DetalheAutorResponse autor;
 
-	@JsonProperty
-	private String autor;
-
-	// CI: 1
+	// CI: 2
 	public DetalheLivroResponse(Livro livro) {
 		this.titulo = livro.getTitulo();
 		this.resumo = livro.getResumo();
@@ -40,8 +37,7 @@ public class DetalheLivroResponse {
 		this.quantidadePaginas = livro.getQuantidadePaginas();
 		this.isbn = livro.getIsbn();
 		this.dataPublicacao = livro.getDataPublicacao();
-		this.categoria = livro.getCategoria().getNome();
-		this.autor = livro.getAutor().getNome();
+		this.autor = new DetalheAutorResponse(livro.getAutor());
 	}
 
 }

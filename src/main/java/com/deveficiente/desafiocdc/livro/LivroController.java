@@ -24,9 +24,9 @@ public class LivroController {
 
 	// CI: 2
 	@GetMapping
-	public ResponseEntity<ItemLivroResponse> lista() {
+	public ResponseEntity<ListaLivroResponse> lista() {
 		List<Livro> livros = obterLivrosCadastrados();
-		return ResponseEntity.ok(new ItemLivroResponse(livros));
+		return ResponseEntity.ok(new ListaLivroResponse(livros));
 	}
 
 	// CI: 2

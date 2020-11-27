@@ -1,4 +1,4 @@
-package com.deveficiente.desafiocdc.livro;
+package com.deveficiente.desafiocdc.livro.novocadastro;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,6 +18,7 @@ import com.deveficiente.desafiocdc.autor.Autor;
 import com.deveficiente.desafiocdc.categoria.Categoria;
 import com.deveficiente.desafiocdc.compartilhado.UniqueProperties;
 import com.deveficiente.desafiocdc.compartilhado.anotacoes.IdCadastrado;
+import com.deveficiente.desafiocdc.livro.Livro;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 // CI: 3
