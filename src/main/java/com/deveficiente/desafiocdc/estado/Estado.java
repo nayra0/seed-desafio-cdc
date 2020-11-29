@@ -1,5 +1,6 @@
 package com.deveficiente.desafiocdc.estado;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,9 +25,14 @@ public class Estado {
 	
 	// CI: 1
 	@NotNull
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "id_pais")
 	private Pais pais;
+	
+	@Deprecated
+	public Estado() {
+		super();
+	}
 
 	public Estado(@NotBlank String nome, Pais pais) {
 		this.nome = nome;
@@ -43,6 +49,10 @@ public class Estado {
 
 	public Pais getPais() {
 		return pais;
+	}
+
+	public boolean pertenceAoPais(Pais pais) {
+		return this.pais.equals(pais);
 	}
 
 }

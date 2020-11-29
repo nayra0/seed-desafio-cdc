@@ -8,7 +8,7 @@ import org.springframework.util.Assert;
 
 import com.deveficiente.desafiocdc.compartilhado.anotacoes.IdCadastrado;
 
-// CI: 1
+// CI: 2
 public class IdCadastradoConstraintValidator implements ConstraintValidator<IdCadastrado, Object> {
 
 	private EntityManager manager;
@@ -25,9 +25,14 @@ public class IdCadastradoConstraintValidator implements ConstraintValidator<IdCa
 		this.idCadastrado = constraintAnnotation;
 	}
 
+	// CI: 1
 	@Override
 	public boolean isValid(Object value, ConstraintValidatorContext context) {
 		Assert.notNull(this.manager, "O entityManager não deve ser nulo");
+		
+		if(value == null) {
+			return true;
+		}
 		
 		Object registro = manager.find(this.idCadastrado.entidade(), value);
 		return registro != null;

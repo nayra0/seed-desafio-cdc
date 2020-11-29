@@ -12,7 +12,7 @@ import com.deveficiente.desafiocdc.compartilhado.anotacoes.IdCadastrado;
 import com.deveficiente.desafiocdc.pais.Pais;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-// CI: 4
+// CI: 3
 // CI : 1
 public class NovoEstadoForm implements UniqueProperties {
 	
@@ -28,8 +28,7 @@ public class NovoEstadoForm implements UniqueProperties {
 	// CI: 2
 	public Estado toModel(EntityManager manager) {
 		Pais pais = manager.find(Pais.class, this.idPais);
-		Estado estado = new Estado(this.nome, pais);
-		return estado;
+		return new Estado(this.nome, pais);
 	}
 
 	@SuppressWarnings("unchecked")
