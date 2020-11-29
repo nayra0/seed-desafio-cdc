@@ -40,6 +40,7 @@ public class ValidationErrorHandler {
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ExceptionHandler(ValidationException.class)
 	public ValidationErrorsResponse handleValidationError(ValidationException exception) {
+		exception.printStackTrace();
 		ValidationErrorsResponse validationErrors = new ValidationErrorsResponse();
 		String mensagemErroValidacao = messageSource.getMessage("validation.error", null, LocaleContextHolder.getLocale());
 		validationErrors.addError(mensagemErroValidacao  + ". " + exception.getLocalizedMessage());
