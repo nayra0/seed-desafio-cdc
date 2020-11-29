@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import com.deveficiente.desafiocdc.compartilhado.UniqueProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+// CI: 2
 // CI: 1
 public class NovoPaisForm implements UniqueProperties{
 

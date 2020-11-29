@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 
 import com.deveficiente.desafiocdc.pais.Pais;
 
+// CI: 1
 @Entity
 public class Estado {
 	
@@ -21,6 +22,7 @@ public class Estado {
 	@NotBlank
 	private String nome;
 	
+	// CI: 1
 	@NotNull
 	@OneToOne
 	@JoinColumn(name = "id_pais")

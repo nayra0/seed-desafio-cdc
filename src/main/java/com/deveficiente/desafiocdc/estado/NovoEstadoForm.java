@@ -12,6 +12,8 @@ import com.deveficiente.desafiocdc.compartilhado.anotacoes.IdCadastrado;
 import com.deveficiente.desafiocdc.pais.Pais;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+// CI: 4
+// CI : 1
 public class NovoEstadoForm implements UniqueProperties {
 	
 	@JsonProperty
@@ -23,6 +25,7 @@ public class NovoEstadoForm implements UniqueProperties {
 	@IdCadastrado(entidade = Pais.class)
 	private Long idPais;
 	
+	// CI: 2
 	public Estado toModel(EntityManager manager) {
 		Pais pais = manager.find(Pais.class, this.idPais);
 		Estado estado = new Estado(this.nome, pais);

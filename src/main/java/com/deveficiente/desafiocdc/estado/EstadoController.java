@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.deveficiente.desafiocdc.compartilhado.UniqueValidator;
 
+// CI: 4
 @RestController
 @RequestMapping("estados")
 public class EstadoController {
@@ -28,11 +29,13 @@ public class EstadoController {
 		this.messageSource = messageSource;
 	}
 	
+	// CI: 3
 	@InitBinder
 	public void init(WebDataBinder dataBinder) {
 		dataBinder.addValidators(new UniqueValidator<NovoEstadoForm>(Estado.class, this.manager, this.messageSource));
 	}
 
+	// CI: 1
 	@Transactional
 	@PostMapping
 	public ResponseEntity<NovoEstadoResponse> cria(@RequestBody @Valid NovoEstadoForm form){
